@@ -7,10 +7,19 @@ interface Props {
 }
 
 const { eyebrow, title, as: Tag = 'h2', id } = Astro.props;
+const labelIsHeading = Boolean(eyebrow) && !title;
 ---
 
 <header class="mb-8 md:mb-12">
-  {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+  {
+    labelIsHeading ? (
+      <Tag id={id} class="eyebrow">
+        {eyebrow}
+      </Tag>
+    ) : (
+      eyebrow && <p class="eyebrow">{eyebrow}</p>
+    )
+  }
   {title && (
     <Tag id={id} class={Tag === 'h1' ? 'page-title' : 'section-title'}>
       {title}

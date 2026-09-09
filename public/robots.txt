@@ -1,2 +1,5 @@
+# DEVELOPMENT ONLY:
+# Remove noindex/nofollow and restore production robots.txt
+# when the lab website is approved for public release.
 User-agent: *
-Allow: /
+Disallow: /

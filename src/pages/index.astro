@@ -27,7 +27,7 @@ const news = (await getNews()).slice(0, 4);
 
   <section class="section pt-0" aria-labelledby="research-heading">
     <div class="wrap">
-      <SectionHeading id="research-heading" eyebrow="Research" title="Research" as="h2" />
+      <SectionHeading id="research-heading" eyebrow="Research" as="h2" />
       <div class="-mt-4">
         {
           researchPrograms.map((program) => (
@@ -50,7 +50,7 @@ const news = (await getNews()).slice(0, 4);
 
   <section class="section pt-0" aria-labelledby="featured-work">
     <div class="wrap">
-      <SectionHeading id="featured-work" eyebrow="Featured Work" title="Featured Work" as="h2" />
+      <SectionHeading id="featured-work" eyebrow="Featured Work" as="h2" />
       <div class="featured-grid">
         <ImagePlaceholder
           aspect="4 / 3"
@@ -85,7 +85,7 @@ const news = (await getNews()).slice(0, 4);
 
   <section class="section pt-0" aria-labelledby="latest-news">
     <div class="wrap">
-      <SectionHeading id="latest-news" eyebrow="Latest News" title="Latest News" as="h2" />
+      <SectionHeading id="latest-news" eyebrow="Latest News" as="h2" />
       {
         news.length === 0 ? (
           <p class="empty-note">News updates coming soon.</p>
