@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import ImagePlaceholder from '../components/ImagePlaceholder.astro';
+import { peoplePlaceholders } from '../data/lab';
+import { getPeople } from '../lib/content';
+
+const people = await getPeople();
+
+const groups = [
+  { role: 'principal-investigator', label: 'Principal Investigator' },
+  { role: 'postdoctoral-fellow', label: 'Postdoctoral Fellows' },
+  { role: 'graduate-student', label: 'Graduate Students' },
+  { role: 'research-staff', label: 'Research Staff' },
+  { role: 'undergraduate', label: 'Undergraduate Researchers' },
+  { role: 'alumni', label: 'Alumni' },
+] as const;
+
+const grouped = groups
+  .map((group) => ({
+    ...group,
+    members: people.filter((person) => person.data.role === group.role),
+  }))
+  .filter((group) => group.members.length > 0);
+---
+
+<BaseLayout title="People" description="People of the Meng Lab.">
+  <section class="section">
+    <div class="wrap">
+      <SectionHeading eyebrow="People" title="People" as="h1" />
+
+      {
+        grouped.map((group) => (
+          <section class="mt-8 md:mt-12" aria-labelledby={group.role}>
+            <h2 id={group.role} class="eyebrow">
+              {group.label}
+            </h2>
+
+            {group.members.map((person) => (
+              <article class="person-grid mt-8">
+                <ImagePlaceholder
+                  aspect="4 / 5"
+                  label="Portrait forthcoming"
+                  alt={person.data.portraitAlt ?? `Portrait placeholder for ${person.data.name}`}
+                />
+                <div>
+                  <h3 class="section-title mb-4">{person.data.name}</h3>
+                  <p class="muted mb-8">
+                    {person.data.title || peoplePlaceholders.title}
+                    <br />
+                    {person.data.institution || peoplePlaceholders.institution}
+                  </p>
+
+                  <div class="detail-block">
+                    <h4 class="detail-label">Biography</h4>
+                    <p class="measure">{peoplePlaceholders.biography}</p>
+                  </div>
+
+                  <div class="detail-block">
+                    <h4 class="detail-label">Education</h4>
+                    {person.data.education.length > 0 ? (
+                      <ul>
+                        {person.data.education.map((item) => (
+                          <li>{item}</li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p class="muted">{peoplePlaceholders.education}</p>
+                    )}
+                  </div>
+
+                  <div class="detail-block">
+                    <h4 class="detail-label">Selected awards</h4>
+                    {person.data.awards.length > 0 ? (
+                      <ul>
+                        {person.data.awards.map((item) => (
+                          <li>{item}</li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p class="muted">{peoplePlaceholders.awards}</p>
+                    )}
+                  </div>
+
+                  <div class="detail-block">
+                    <h4 class="detail-label">External profiles</h4>
+                    {person.data.links.length > 0 ? (
+                      <p class="flex flex-wrap gap-x-4 gap-y-2">
+                        {person.data.links.map((link) => (
+                          <a class="editorial-link" href={link.href} rel="noopener noreferrer">
+                            {link.label}
+                          </a>
+                        ))}
+                      </p>
+                    ) : (
+                      <p class="muted">{peoplePlaceholders.links}</p>
+                    )}
+                  </div>
+                </div>
+              </article>
+            ))}
+          </section>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

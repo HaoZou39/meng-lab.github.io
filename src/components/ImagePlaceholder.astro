@@ -1,0 +1,33 @@
+---
+interface Props {
+  aspect?: string;
+  label?: string;
+  src?: string;
+  alt?: string;
+  class?: string;
+}
+
+const {
+  aspect = '16 / 9',
+  label = 'Scientific image forthcoming',
+  src,
+  alt = '',
+  class: className = '',
+} = Astro.props;
+---
+
+<figure class:list={['m-0', className]}>
+  <div
+    class="placeholder-frame"
+    style={`aspect-ratio: ${aspect};`}
+    role={src ? undefined : 'img'}
+    aria-label={src ? undefined : alt || label}
+  >
+    {src && <img src={src} alt={alt} />}
+  </div>
+  {
+    label && (
+      <figcaption class="placeholder-caption">{label}</figcaption>
+    )
+  }
+</figure>

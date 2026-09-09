@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import ResearchItem from '../components/ResearchItem.astro';
+import ImagePlaceholder from '../components/ImagePlaceholder.astro';
+import { researchPage, researchPrograms } from '../data/lab';
+---
+
+<BaseLayout title="Research" description="Research programs of the Meng Lab.">
+  <section class="section">
+    <div class="wrap">
+      <SectionHeading eyebrow="Research" title="Research" as="h1">
+        <p class="lede mt-6">{researchPage.intro}</p>
+      </SectionHeading>
+
+      <div class="mt-16 md:mt-24 max-w-3xl">
+        <p class="eyebrow">Central hypothesis</p>
+        <p class="section-title">{researchPage.hypothesis}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section pt-0" aria-labelledby="research-programs">
+    <div class="wrap">
+      <h2 id="research-programs" class="sr-only">Research programs</h2>
+      {
+        researchPrograms.map((program, index) => (
+          <ResearchItem
+            number={program.number}
+            title={program.title}
+            question={program.question}
+            summary={program.summary}
+            split={index === 1}
+          >
+            {index === 1 && (
+              <ImagePlaceholder
+                aspect="4 / 5"
+                label="Image forthcoming"
+                alt="Placeholder for research program imagery"
+              />
+            )}
+          </ResearchItem>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section pt-0" aria-labelledby="our-approach">
+    <div class="wrap">
+      <SectionHeading id="our-approach" eyebrow="Our Approach" title="Our Approach" as="h2">
+        <p class="lede mt-6">{researchPage.approachIntro}</p>
+      </SectionHeading>
+
+      <div class="mt-4 max-w-3xl">
+        {
+          researchPage.approach.map((item, index) => (
+            <article class="research-item">
+              <p class="research-number">{String(index + 1).padStart(2, '0')}</p>
+              <div>
+                <h3 class="research-title mb-3">{item.title}</h3>
+                <p class="muted">{item.text}</p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+
+      {/*
+        PI REVIEW REQUIRED:
+        Final prominence and wording of YAPon as a signature platform are provisional.
+        Do not over-brand the entire laboratory around YAP.
+      */}
+      <div class="mt-20 md:mt-28 max-w-3xl">
+        <p class="eyebrow">Platform placeholder</p>
+        <h3 class="research-title mb-4">{researchPage.yapon.title}</h3>
+        <p class="muted">{researchPage.yapon.text}</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

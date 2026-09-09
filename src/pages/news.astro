@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import NewsItem from '../components/NewsItem.astro';
+import { getNews } from '../lib/content';
+
+const news = await getNews();
+---
+
+<BaseLayout title="News" description="News from the Meng Lab.">
+  <section class="section">
+    <div class="wrap">
+      <SectionHeading eyebrow="News" title="News" as="h1" />
+
+      {
+        news.length === 0 ? (
+          <p class="empty-note">News updates coming soon.</p>
+        ) : (
+          <div class="mt-8">
+            {news.map((entry) => (
+              <NewsItem
+                title={entry.data.title}
+                date={entry.data.date}
+                placeholder={entry.data.placeholder}
+              />
+            ))}
+          </div>
+        )
+      }
+    </div>
+  </section>
+</BaseLayout>

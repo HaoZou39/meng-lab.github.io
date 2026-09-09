@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import ResearchItem from '../components/ResearchItem.astro';
+import PublicationItem from '../components/PublicationItem.astro';
+import NewsItem from '../components/NewsItem.astro';
+import ImagePlaceholder from '../components/ImagePlaceholder.astro';
+import { joinCopy, ourQuestion, researchPrograms } from '../data/lab';
+import { getNews, getPublications } from '../lib/content';
+import { withBase } from '../lib/paths';
+
+const featured = (await getPublications()).filter((entry) => entry.data.featured);
+const news = (await getNews()).slice(0, 4);
+---
+
+<BaseLayout>
+  <Hero />
+
+  <section class="section" aria-labelledby="our-question">
+    <div class="wrap">
+      <p class="eyebrow">{ourQuestion.eyebrow}</p>
+      <h2 id="our-question" class="hero-title max-w-[18ch]">{ourQuestion.main}</h2>
+      <p class="lede mt-8">{ourQuestion.supporting}</p>
+    </div>
+  </section>
+
+  <section class="section pt-0" aria-labelledby="research-heading">
+    <div class="wrap">
+      <SectionHeading id="research-heading" eyebrow="Research" title="Research" as="h2" />
+      <div class="-mt-4">
+        {
+          researchPrograms.map((program) => (
+            <ResearchItem
+              number={program.number}
+              title={program.title}
+              question={program.question}
+              summary={program.summary}
+            />
+          ))
+        }
+      </div>
+      <p class="mt-10">
+        <a class="editorial-link" href={withBase('/research')}>
+          View the research program <span aria-hidden="true">→</span>
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section pt-0" aria-labelledby="featured-work">
+    <div class="wrap">
+      <SectionHeading id="featured-work" eyebrow="Featured Work" title="Featured Work" as="h2" />
+      <div class="featured-grid">
+        <ImagePlaceholder
+          aspect="4 / 3"
+          label="Image forthcoming"
+          alt="Placeholder for featured publication figure"
+        />
+        <div>
+          {
+            featured.map((entry) => (
+              <PublicationItem
+                title={entry.data.title}
+                authors={entry.data.authors}
+                journal={entry.data.journal}
+                year={entry.data.year}
+                doi={entry.data.doi}
+                pubmed={entry.data.pubmed}
+                pdf={entry.data.pdf}
+                provisional={entry.data.provisional}
+                flush
+              />
+            ))
+          }
+          <p class="mt-8">
+            <a class="editorial-link" href={withBase('/publications')}>
+              All publications <span aria-hidden="true">→</span>
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section pt-0" aria-labelledby="latest-news">
+    <div class="wrap">
+      <SectionHeading id="latest-news" eyebrow="Latest News" title="Latest News" as="h2" />
+      {
+        news.length === 0 ? (
+          <p class="empty-note">News updates coming soon.</p>
+        ) : (
+          news.slice(0, 4).map((entry) => (
+            <NewsItem
+              title={entry.data.title}
+              date={entry.data.date}
+              placeholder={entry.data.placeholder}
+            />
+          ))
+        )
+      }
+      <p class="mt-10">
+        <a class="editorial-link" href={withBase('/news')}>
+          See all news <span aria-hidden="true">→</span>
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section pt-0" aria-labelledby="join-lab">
+    <div class="wrap">
+      <SectionHeading id="join-lab" eyebrow="Join the Lab" title={joinCopy.interest} as="h2" />
+      <p class="lede">{joinCopy.recruitmentPending}</p>
+      <p class="mt-8">
+        <a class="editorial-link" href={withBase('/join')}>
+          Join Us <span aria-hidden="true">→</span>
+        </a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>

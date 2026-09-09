@@ -1,0 +1,21 @@
+---
+interface Props {
+  number: string;
+  title: string;
+  question: string;
+  summary?: string;
+  split?: boolean;
+}
+
+const { number, title, question, summary, split = false } = Astro.props;
+---
+
+<article class:list={['research-item', split && 'is-split']}>
+  <p class="research-number">{number}</p>
+  <div>
+    <h3 class="research-title mb-3">{title}</h3>
+    {summary && <p class="mb-3">{summary}</p>}
+    <p class="muted">{question}</p>
+  </div>
+  {split && <slot />}
+</article>

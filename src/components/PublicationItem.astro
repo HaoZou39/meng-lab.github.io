@@ -1,0 +1,50 @@
+---
+interface Props {
+  title: string;
+  authors?: string[];
+  journal: string;
+  year: number;
+  doi?: string;
+  pubmed?: string;
+  pdf?: string;
+  provisional?: boolean;
+  flush?: boolean;
+}
+
+const {
+  title,
+  authors = [],
+  journal,
+  year,
+  doi,
+  pubmed,
+  pdf,
+  provisional = false,
+  flush = false,
+} = Astro.props;
+
+const links = [
+  doi ? { href: `https://doi.org/${doi}`, label: 'DOI' } : null,
+  pubmed ? { href: pubmed, label: 'PubMed' } : null,
+  pdf ? { href: pdf, label: 'PDF' } : null,
+].filter((link): link is { href: string; label: string } => Boolean(link));
+---
+
+<article class:list={[flush ? 'grid gap-2' : 'pub-item']}>
+  <h3 class="research-title">{title}</h3>
+  {authors.length > 0 && <p>{authors.join(', ')}</p>}
+  <p class="meta">{journal} · {year}</p>
+  {
+    links.length > 0 ? (
+      <p class="mt-2 flex flex-wrap gap-x-4 gap-y-1">
+        {links.map((link) => (
+          <a class="editorial-link" href={link.href} rel="noopener noreferrer">
+            {link.label}
+          </a>
+        ))}
+      </p>
+    ) : (
+      provisional && <p class="meta mt-2">DOI / PubMed / PDF links forthcoming.</p>
+    )
+  }
+</article>

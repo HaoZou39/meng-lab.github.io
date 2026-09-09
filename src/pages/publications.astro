@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import PublicationItem from '../components/PublicationItem.astro';
+import { getPublications } from '../lib/content';
+
+const publications = await getPublications();
+
+const featured = publications.filter((entry) => entry.data.featured);
+
+const years = [...new Set(publications.map((entry) => entry.data.year))];
+---
+
+<BaseLayout title="Publications" description="Publications from the Meng Lab.">
+  <section class="section">
+    <div class="wrap">
+      <SectionHeading eyebrow="Publications" title="Publications" as="h1" />
+
+      <section class="mt-12 md:mt-16" aria-labelledby="featured-publications">
+        <h2 id="featured-publications" class="section-title mb-6">Featured Publications</h2>
+        {
+          featured.length === 0 ? (
+            <p class="empty-note">Featured publications will be listed here.</p>
+          ) : (
+            featured.map((entry) => (
+              <PublicationItem
+                title={entry.data.title}
+                authors={entry.data.authors}
+                journal={entry.data.journal}
+                year={entry.data.year}
+                doi={entry.data.doi}
+                pubmed={entry.data.pubmed}
+                pdf={entry.data.pdf}
+                provisional={entry.data.provisional}
+              />
+            ))
+          )
+        }
+      </section>
+
+      <section class="mt-20 md:mt-28" aria-labelledby="all-publications">
+        <h2 id="all-publications" class="section-title mb-6">All Publications</h2>
+        {
+          publications.length === 0 ? (
+            <p class="empty-note">Publications will be listed here as they are added.</p>
+          ) : (
+            years.map((year) => (
+              <div class="mt-10">
+                <h3 class="eyebrow">{year}</h3>
+                {publications
+                  .filter((entry) => entry.data.year === year)
+                  .map((entry) => (
+                    <PublicationItem
+                      title={entry.data.title}
+                      authors={entry.data.authors}
+                      journal={entry.data.journal}
+                      year={entry.data.year}
+                      doi={entry.data.doi}
+                      pubmed={entry.data.pubmed}
+                      pdf={entry.data.pdf}
+                      provisional={entry.data.provisional}
+                    />
+                  ))}
+              </div>
+            ))
+          )
+        }
+      </section>
+    </div>
+  </section>
+</BaseLayout>

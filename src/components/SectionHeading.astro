@@ -1,0 +1,20 @@
+---
+interface Props {
+  eyebrow?: string;
+  title?: string;
+  as?: 'h1' | 'h2' | 'h3';
+  id?: string;
+}
+
+const { eyebrow, title, as: Tag = 'h2', id } = Astro.props;
+---
+
+<header class="mb-8 md:mb-12">
+  {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+  {title && (
+    <Tag id={id} class={Tag === 'h1' ? 'page-title' : 'section-title'}>
+      {title}
+    </Tag>
+  )}
+  <slot />
+</header>

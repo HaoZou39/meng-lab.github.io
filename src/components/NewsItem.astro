@@ -1,0 +1,32 @@
+---
+interface Props {
+  title: string;
+  date: Date;
+  href?: string;
+  placeholder?: boolean;
+}
+
+const { title, date, href, placeholder = false } = Astro.props;
+
+const formatted = date.toLocaleDateString('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<article class="news-row">
+  <time class="meta" datetime={date.toISOString().slice(0, 10)}>{formatted}</time>
+  <div>
+    {
+      href ? (
+        <a class="editorial-link" href={href}>
+          {title}
+        </a>
+      ) : (
+        <p>{title}</p>
+      )
+    }
+    {placeholder && <p class="meta mt-1">Development placeholder — not laboratory news.</p>}
+  </div>
+</article>

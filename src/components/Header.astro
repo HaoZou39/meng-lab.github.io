@@ -1,0 +1,91 @@
+---
+import { lab, navigation } from '../data/lab';
+import { isCurrentPath, withBase } from '../lib/paths';
+
+const pathname = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="wrap site-header-inner">
+    <a class="wordmark" href={withBase('/')}>{lab.name}</a>
+
+    <nav class="hidden md:block" aria-label="Primary">
+      <ul class="nav-list">
+        {
+          navigation.map((item) => (
+            <li>
+              <a
+                class="nav-link"
+                href={withBase(item.href)}
+                aria-current={isCurrentPath(pathname, item.href) ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <button
+      class="menu-button md:hidden"
+      type="button"
+      data-menu-button
+      aria-controls="mobile-nav"
+      aria-expanded="false"
+      aria-label="Open menu"
+    >
+      <span class="menu-button-bars" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <div class="wrap md:hidden">
+    <nav class="mobile-nav" id="mobile-nav" hidden>
+      {
+        navigation.map((item) => (
+          <a
+            href={withBase(item.href)}
+            aria-current={isCurrentPath(pathname, item.href) ? 'page' : undefined}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</header>
+
+<script>
+  const button = document.querySelector<HTMLButtonElement>('[data-menu-button]');
+  const panel = document.querySelector<HTMLElement>('#mobile-nav');
+
+  if (button && panel) {
+    const closeMenu = () => {
+      button.setAttribute('aria-expanded', 'false');
+      button.setAttribute('aria-label', 'Open menu');
+      panel.hidden = true;
+    };
+
+    const openMenu = () => {
+      button.setAttribute('aria-expanded', 'true');
+      button.setAttribute('aria-label', 'Close menu');
+      panel.hidden = false;
+    };
+
+    button.addEventListener('click', () => {
+      const expanded = button.getAttribute('aria-expanded') === 'true';
+      if (expanded) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && button.getAttribute('aria-expanded') === 'true') {
+        closeMenu();
+        button.focus();
+      }
+    });
+  }
+</script>
