@@ -39,19 +39,19 @@ export const researchThemes = [
     number: '01',
     title: 'Cardiac Repair & Regeneration',
     summary:
-      'Our published work examines how controlled modulation of YAP signaling influences cardiac responses to injury, cardiomyocyte states, and cardiac protection.',
+      'Our published work has examined how controlled modulation of YAP signaling influences cardiac responses to injury, cardiomyocyte states, and cardiac protection.',
   },
   {
     number: '02',
     title: 'Hippo–YAP Signaling',
     summary:
-      'We investigate how Hippo pathway components and YAP/TAZ regulate cellular signaling across cardiovascular, immune, and disease contexts.',
+      'Our published work has examined how Hippo pathway components and YAP/TAZ regulate cellular signaling across cardiovascular, immune, and disease contexts.',
   },
   {
     number: '03',
     title: 'Innate Immune Signaling',
     summary:
-      'Our work has defined mechanisms connecting Hippo pathway signaling with antiviral defense, cytosolic nucleic-acid sensing, and antitumor immunity.',
+      'Our published work has defined mechanisms connecting Hippo pathway signaling with antiviral defense, cytosolic nucleic-acid sensing, and antitumor immunity.',
   },
 ] as const;
 
@@ -66,7 +66,7 @@ export const researchPage = {
     },
     {
       title: 'Hippo–YAP Signaling',
-      text: 'Hippo signaling and its downstream effectors YAP and TAZ regulate diverse cellular processes. Published work from Fansen Meng has investigated this pathway in cardiac biology, innate immune signaling, and host–pathogen interactions, including regulation of YAP/TEAD activity during SARS-CoV-2 infection.',
+      text: 'Hippo signaling and its downstream effectors YAP and TAZ regulate diverse cellular processes. Published work has examined this pathway in cardiac biology, innate immune signaling, and host–pathogen interactions, including regulation of YAP/TEAD activity during SARS-CoV-2 infection.',
     },
     {
       title: 'Innate Immune Signaling',
@@ -94,6 +94,7 @@ export const joinCopy = {
 export const peoplePlaceholders = {
   title: 'Title and appointment will be added following PI review.',
   institution: 'Institutional affiliation has not yet been published on this site.',
+  education: 'Education and training information will be added when confirmed.',
   awards: 'Selected awards will be listed when confirmed.',
   links: 'External profile links (for example Google Scholar or ORCID) will be added when provided.',
 } as const;
