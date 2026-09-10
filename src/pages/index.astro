@@ -11,6 +11,7 @@ import { getNews, getPublications } from '../lib/content';
 import { withBase } from '../lib/paths';
 
 const featured = (await getPublications()).filter((entry) => entry.data.featured);
+const featuredVisual = featured.find((entry) => entry.data.featuredImage);
 const news = (await getNews()).slice(0, 4);
 ---
 
@@ -46,11 +47,31 @@ const news = (await getNews()).slice(0, 4);
     <div class="wrap">
       <SectionHeading id="featured-work" eyebrow="Featured Work" as="h2" />
       <div class="featured-grid">
-        <ImagePlaceholder
-          aspect="4 / 3"
-          label="Image forthcoming"
-          alt="Placeholder for featured publication figure"
-        />
+        {
+          featuredVisual?.data.featuredImage ? (
+            <figure class="featured-work-media m-0">
+              <div class="featured-work-media__frame">
+                <img
+                  src={withBase(featuredVisual.data.featuredImage)}
+                  alt={
+                    featuredVisual.data.featuredImageAlt ??
+                    'Editorial illustration for the featured publication'
+                  }
+                  width="1448"
+                  height="1086"
+                  decoding="async"
+                  loading="lazy"
+                />
+              </div>
+            </figure>
+          ) : (
+            <ImagePlaceholder
+              aspect="4 / 3"
+              label="Image forthcoming"
+              alt="Placeholder for featured publication figure"
+            />
+          )
+        }
         <div>
           {
             featured.map((entry) => (

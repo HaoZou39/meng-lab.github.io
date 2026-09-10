@@ -22,6 +22,9 @@ const publications = defineCollection({
     doi: z.string().optional(),
     pubmed: z.string().optional(),
     pdf: z.string().optional(),
+    // Optional homepage Featured Work image path under public/
+    featuredImage: z.string().optional(),
+    featuredImageAlt: z.string().optional(),
     // Provisional entries establish layout without claiming complete metadata.
     provisional: z.boolean().default(false),
   }),
