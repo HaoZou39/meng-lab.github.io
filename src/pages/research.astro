@@ -4,6 +4,7 @@ import SectionHeading from '../components/SectionHeading.astro';
 import ResearchItem from '../components/ResearchItem.astro';
 import ImagePlaceholder from '../components/ImagePlaceholder.astro';
 import { researchPage, researchThemes } from '../data/lab';
+import { withBase } from '../lib/paths';
 ---
 
 <BaseLayout title="Research" description="Published research from the Meng Lab.">
@@ -19,22 +20,42 @@ import { researchPage, researchThemes } from '../data/lab';
     <div class="wrap">
       <h2 id="research-themes" class="sr-only">Published research themes</h2>
       {
-        researchPage.sections.map((section, index) => (
-          <ResearchItem
-            number={researchThemes[index].number}
-            title={section.title}
-            summary={section.text}
-            split={index === 1}
-          >
-            {index === 1 && (
-              <ImagePlaceholder
-                aspect="4 / 5"
-                label="Image forthcoming"
-                alt="Placeholder for research theme imagery"
-              />
-            )}
-          </ResearchItem>
-        ))
+        researchPage.sections.map((section, index) => {
+          const image = 'image' in section ? section.image : undefined;
+          const imageAlt = 'imageAlt' in section ? section.imageAlt : undefined;
+          const showMedia = index === 1;
+
+          return (
+            <ResearchItem
+              number={researchThemes[index].number}
+              title={section.title}
+              summary={section.text}
+              split={showMedia}
+            >
+              {showMedia &&
+                (image ? (
+                  <figure class="research-theme-media m-0">
+                    <div class="research-theme-media__frame">
+                      <img
+                        src={withBase(image)}
+                        alt={imageAlt ?? 'Research theme illustration'}
+                        width="1122"
+                        height="1402"
+                        decoding="async"
+                        loading="lazy"
+                      />
+                    </div>
+                  </figure>
+                ) : (
+                  <ImagePlaceholder
+                    aspect="4 / 5"
+                    label="Image forthcoming"
+                    alt="Placeholder for research theme imagery"
+                  />
+                ))}
+            </ResearchItem>
+          );
+        })
       }
     </div>
   </section>

@@ -67,6 +67,8 @@ export const researchPage = {
     {
       title: 'Hippo–YAP Signaling',
       text: 'Hippo signaling and its downstream effectors YAP and TAZ regulate diverse cellular processes. Published work has examined this pathway in cardiac biology, innate immune signaling, and host–pathogen interactions, including regulation of YAP/TEAD activity during SARS-CoV-2 infection.',
+      image: '/media/research/hippo-yap-signaling.webp',
+      imageAlt: 'Hippo–YAP signaling editorial illustration',
     },
     {
       title: 'Innate Immune Signaling',
