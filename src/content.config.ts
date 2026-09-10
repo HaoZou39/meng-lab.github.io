@@ -54,6 +54,8 @@ const people = defineCollection({
         }),
       )
       .default([]),
+    // Optional web path under public/, e.g. /media/people/name.webp
+    portrait: z.string().optional(),
     portraitAlt: z.string().optional(),
   }),
 });

@@ -4,6 +4,7 @@ import SectionHeading from '../components/SectionHeading.astro';
 import ImagePlaceholder from '../components/ImagePlaceholder.astro';
 import { peoplePlaceholders } from '../data/lab';
 import { getPeople } from '../lib/content';
+import { withBase } from '../lib/paths';
 
 const people = await getPeople();
 
@@ -38,11 +39,26 @@ const grouped = groups
 
             {group.members.map((person) => (
               <article class="person-grid mt-8">
-                <ImagePlaceholder
-                  aspect="4 / 5"
-                  label="Portrait forthcoming"
-                  alt={person.data.portraitAlt ?? `Portrait placeholder for ${person.data.name}`}
-                />
+                {person.data.portrait ? (
+                  <figure class="person-portrait m-0">
+                    <div class="person-portrait__frame">
+                      <img
+                        src={withBase(person.data.portrait)}
+                        alt={person.data.portraitAlt ?? person.data.name}
+                        width="1200"
+                        height="1500"
+                        decoding="async"
+                        loading="lazy"
+                      />
+                    </div>
+                  </figure>
+                ) : (
+                  <ImagePlaceholder
+                    aspect="4 / 5"
+                    label="Portrait forthcoming"
+                    alt={person.data.portraitAlt ?? `Portrait placeholder for ${person.data.name}`}
+                  />
+                )}
                 <div>
                   <h3 class="section-title mb-4">{person.data.name}</h3>
                   <p class="muted mb-8">

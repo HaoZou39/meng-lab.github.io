@@ -4,7 +4,8 @@ name: Fansen Meng, PhD
 role: principal-investigator
 order: 1
 reviewStatus: pi-review
-portraitAlt: Portrait of Fansen Meng, PhD (image forthcoming)
+portrait: /media/people/fansen-meng.webp
+portraitAlt: Fansen Meng, PhD
 education:
   - B.S., Biological Science, Ludong University
   - M.S., Physiology, Zhejiang University
