@@ -40,9 +40,15 @@ const news = (await getNews()).slice(0, 4);
           ))
         }
       </div>
-      <p class="mt-10">
-        <a class="editorial-link" href={withBase('/research')}>
-          View the research program <span aria-hidden="true">→</span>
+    </div>
+  </section>
+
+  <section class="section pt-0" aria-labelledby="people-teaser">
+    <div class="wrap">
+      <SectionHeading id="people-teaser" eyebrow="People" title="Meet the Team" as="h2" />
+      <p>
+        <a class="editorial-link" href={withBase('/people')}>
+          View People <span aria-hidden="true">→</span>
         </a>
       </p>
     </div>
