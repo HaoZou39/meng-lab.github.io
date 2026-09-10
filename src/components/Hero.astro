@@ -1,16 +1,12 @@
 ---
 import { lab } from '../data/lab';
 import { withBase } from '../lib/paths';
-import ImagePlaceholder from './ImagePlaceholder.astro';
+import HeroMedia from './HeroMedia.astro';
 ---
 
 <section class="section pt-[4.5rem] md:pt-20">
   <div class="wrap">
-    <ImagePlaceholder
-      aspect="16 / 9"
-      label="Image forthcoming"
-      alt="Placeholder for a forthcoming large-scale scientific photograph"
-    />
+    <HeroMedia />
     <h1 class="hero-title mt-10 md:mt-14">{lab.taglineLines[0]}<br />{lab.taglineLines[1]}</h1>
     <p class="lede mt-6">{lab.supportingSentence}</p>
     <p class="mt-8">

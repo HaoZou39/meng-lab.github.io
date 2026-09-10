@@ -1,0 +1,98 @@
+---
+/**
+ * Homepage Hero media (Shot V1).
+ * Keep this intentionally simple: one MP4 + poster.
+ * Future shots may swap `src` / `poster` or add alternate <source> elements.
+ */
+import { withBase } from '../lib/paths';
+
+interface Props {
+  src?: string;
+  poster?: string;
+  class?: string;
+}
+
+const {
+  src = '/media/hero/hero-v1.mp4',
+  poster = '/media/hero/hero-v1-poster.webp',
+  class: className = '',
+} = Astro.props;
+
+const videoSrc = withBase(src);
+const posterSrc = withBase(poster);
+---
+
+<figure class:list={['hero-media', 'm-0', className]}>
+  <div class="hero-media__frame">
+    <img
+      class="hero-media__fallback"
+      src={posterSrc}
+      alt=""
+      width="752"
+      height="424"
+      decoding="async"
+      fetchpriority="high"
+    />
+    <video
+      class="hero-media__video"
+      poster={posterSrc}
+      autoplay
+      muted
+      playsinline
+      preload="metadata"
+      aria-hidden="true"
+      tabindex="-1"
+    >
+      <source src={videoSrc} type="video/mp4" />
+    </video>
+  </div>
+</figure>
+
+<script>
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  function applyReducedMotion(video) {
+    if (!reduceMotion.matches) return;
+    video.pause();
+    video.removeAttribute('autoplay');
+    video.hidden = true;
+  }
+
+  document.querySelectorAll('.hero-media__video').forEach((video) => {
+    applyReducedMotion(video);
+  });
+</script>
+
+<style>
+  .hero-media__frame {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #e7e1d8;
+  }
+
+  .hero-media__fallback,
+  .hero-media__video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  .hero-media__fallback {
+    position: absolute;
+    inset: 0;
+  }
+
+  .hero-media__video {
+    position: absolute;
+    inset: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-media__video {
+      display: none;
+    }
+  }
+</style>
