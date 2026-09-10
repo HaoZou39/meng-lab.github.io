@@ -9,6 +9,7 @@ interface Props {
   pdf?: string;
   provisional?: boolean;
   flush?: boolean;
+  compactAuthors?: boolean;
 }
 
 const {
@@ -21,7 +22,11 @@ const {
   pdf,
   provisional = false,
   flush = false,
+  compactAuthors = false,
 } = Astro.props;
+
+const authorLine =
+  authors.length === 0 ? '' : compactAuthors ? `${authors[0]} et al.` : authors.join(', ');
 
 const links = [
   doi ? { href: `https://doi.org/${doi}`, label: 'DOI' } : null,
@@ -32,7 +37,7 @@ const links = [
 
 <article class:list={[flush ? 'grid gap-2' : 'pub-item']}>
   <h3 class="research-title">{title}</h3>
-  {authors.length > 0 && <p>{authors.join(', ')}</p>}
+  {authorLine && <p>{authorLine}</p>}
   <p class="meta">{journal} · {year}</p>
   {
     links.length > 0 ? (
