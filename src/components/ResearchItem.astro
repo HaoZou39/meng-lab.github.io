@@ -2,8 +2,8 @@
 interface Props {
   number: string;
   title: string;
-  question: string;
   summary?: string;
+  question?: string;
   split?: boolean;
 }
 
@@ -15,7 +15,7 @@ const { number, title, question, summary, split = false } = Astro.props;
   <div>
     <h3 class="research-title mb-3">{title}</h3>
     {summary && <p class="mb-3">{summary}</p>}
-    <p class="muted">{question}</p>
+    {question && <p class="muted">{question}</p>}
   </div>
   {split && <slot />}
 </article>

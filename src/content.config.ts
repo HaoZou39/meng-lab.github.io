@@ -44,6 +44,8 @@ const people = defineCollection({
     institution: z.string().optional(),
     education: z.array(z.string()).default([]),
     awards: z.array(z.string()).default([]),
+    biography: z.array(z.string()).default([]),
+    reviewStatus: z.enum(['pi-review']).optional(),
     links: z
       .array(
         z.object({

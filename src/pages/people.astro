@@ -53,7 +53,15 @@ const grouped = groups
 
                   <div class="detail-block">
                     <h4 class="detail-label">Biography</h4>
-                    <p class="measure">{peoplePlaceholders.biography}</p>
+                    {person.data.biography.length > 0 ? (
+                      <div class="measure">
+                        {person.data.biography.map((paragraph) => (
+                          <p class="mb-4 last:mb-0">{paragraph}</p>
+                        ))}
+                      </div>
+                    ) : (
+                      <p class="measure muted">A short biography will appear here after PI review.</p>
+                    )}
                   </div>
 
                   <div class="detail-block">

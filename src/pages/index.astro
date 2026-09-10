@@ -6,7 +6,7 @@ import ResearchItem from '../components/ResearchItem.astro';
 import PublicationItem from '../components/PublicationItem.astro';
 import NewsItem from '../components/NewsItem.astro';
 import ImagePlaceholder from '../components/ImagePlaceholder.astro';
-import { joinCopy, ourQuestion, researchPrograms } from '../data/lab';
+import { joinCopy, peopleTeaser, researchThemes } from '../data/lab';
 import { getNews, getPublications } from '../lib/content';
 import { withBase } from '../lib/paths';
 
@@ -17,26 +17,13 @@ const news = (await getNews()).slice(0, 4);
 <BaseLayout>
   <Hero />
 
-  <section class="section" aria-labelledby="our-question">
-    <div class="wrap">
-      <p class="eyebrow">{ourQuestion.eyebrow}</p>
-      <h2 id="our-question" class="hero-title max-w-[18ch]">{ourQuestion.main}</h2>
-      <p class="lede mt-8">{ourQuestion.supporting}</p>
-    </div>
-  </section>
-
-  <section class="section pt-0" aria-labelledby="research-heading">
+  <section class="section" aria-labelledby="research-heading">
     <div class="wrap">
       <SectionHeading id="research-heading" eyebrow="Research" as="h2" />
       <div class="-mt-4">
         {
-          researchPrograms.map((program) => (
-            <ResearchItem
-              number={program.number}
-              title={program.title}
-              question={program.question}
-              summary={program.summary}
-            />
+          researchThemes.map((theme) => (
+            <ResearchItem number={theme.number} title={theme.title} summary={theme.summary} />
           ))
         }
       </div>
@@ -46,9 +33,10 @@ const news = (await getNews()).slice(0, 4);
   <section class="section pt-0" aria-labelledby="people-teaser">
     <div class="wrap">
       <SectionHeading id="people-teaser" eyebrow="People" title="Meet the Team" as="h2" />
-      <p>
+      <p class="lede">{peopleTeaser.supporting}</p>
+      <p class="mt-8">
         <a class="editorial-link" href={withBase('/people')}>
-          View People <span aria-hidden="true">→</span>
+          Meet the Team <span aria-hidden="true">→</span>
         </a>
       </p>
     </div>

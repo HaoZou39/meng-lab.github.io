@@ -1,27 +1,29 @@
 /**
- * Central, easy-to-edit laboratory copy for Phase 1.
+ * Public-safe laboratory copy.
  *
- * PROVISIONAL / PI REVIEW REQUIRED:
- * This wording is frozen only for website development. Final scientific
- * language, branding, and institutional details require PI review.
- * Edit this file rather than duplicating strings in components.
+ * PI REVIEW REQUIRED: wording/branding only.
+ * This file must contain only published/public information.
  */
+
+export const reviewStatus = 'pi-review' as const;
 
 export const siteMeta = {
   title: 'Meng Lab',
-  description: 'Reprogramming tissue niches for regeneration and rejuvenation.',
+  description:
+    'Our published research spans cardiac biology, Hippo–YAP signaling, and innate immune regulation.',
 } as const;
 
 export const lab = {
   name: 'MENG LAB',
   shortName: 'Meng Lab',
-  tagline: 'Reprogramming tissue niches for regeneration and rejuvenation.',
+  reviewStatus,
+  tagline: 'Understanding signaling and cellular responses in cardiac repair and regeneration.',
   taglineLines: [
-    'Reprogramming tissue niches',
-    'for regeneration and rejuvenation.',
+    'Understanding signaling and cellular responses',
+    'in cardiac repair and regeneration.',
   ] as const,
   supportingSentence:
-    'We study how transient cellular reprogramming and immune–tissue interactions restore regenerative capacity in the injured heart.',
+    'Our published research spans cardiac biology, Hippo–YAP signaling, and innate immune regulation.',
 } as const;
 
 export const navigation = [
@@ -32,101 +34,66 @@ export const navigation = [
   { href: '/join', label: 'Join Us' },
 ] as const;
 
-export const ourQuestion = {
-  eyebrow: 'Our Question',
-  main: 'Why does the mammalian heart lose its regenerative capacity after birth?',
-  supporting:
-    'We investigate how precisely controlled cell-state and tissue-niche reprogramming can restore regenerative competence.',
-} as const;
-
-export const researchPrograms = [
+export const researchThemes = [
   {
     number: '01',
-    title: 'Regenerative Cell-State Plasticity',
-    question: 'How do cardiomyocytes enter, maintain, and exit regenerative states?',
+    title: 'Cardiac Repair & Regeneration',
     summary:
-      'We study the cellular programs that allow cardiomyocytes to enter, sustain, and leave regenerative states after injury.',
+      'Our published work examines how controlled modulation of YAP signaling influences cardiac responses to injury, cardiomyocyte states, and cardiac protection.',
   },
   {
     number: '02',
-    title: 'Cardioimmune Regenerative Niches',
-    question: 'How do immune cells coordinate multicellular tissue repair and regeneration?',
+    title: 'Hippo–YAP Signaling',
     summary:
-      'We examine how immune–tissue interactions assemble a niche that supports cardiac repair and regeneration.',
+      'We investigate how Hippo pathway components and YAP/TAZ regulate cellular signaling across cardiovascular, immune, and disease contexts.',
   },
   {
     number: '03',
-    title: 'Trained Immunity & Regeneration',
-    question: 'How does transient immune reprogramming shape subsequent cardiac repair?',
+    title: 'Innate Immune Signaling',
     summary:
-      'We investigate how brief immune reprogramming influences later rounds of cardiac repair.',
+      'Our work has defined mechanisms connecting Hippo pathway signaling with antiviral defense, cytosolic nucleic-acid sensing, and antitumor immunity.',
   },
 ] as const;
 
 export const researchPage = {
+  reviewStatus,
   intro:
-    'The mammalian heart loses regenerative capacity after birth. Understanding this transition, and whether regenerative competence can be restored, is the central problem of our work.',
-  hypothesis:
-    'Precise and transient reprogramming can reconstruct a pro-regenerative tissue niche.',
-  approachIntro:
-    'Our experimental approach is still being documented for this site. The headings below mark the methods we intend to describe; details will be added after PI review.',
-  approach: [
+    'The Meng Lab website currently highlights published work spanning cardiac repair and regeneration, Hippo–YAP signaling, and innate immune regulation.',
+  sections: [
     {
-      title: 'Precise temporal control',
-      text: 'Placeholder: strategies for time-resolved perturbation will be described here.',
+      title: 'Cardiac Repair & Regeneration',
+      text: 'Recent published work has examined the therapeutic and biological consequences of controlled YAP activation in the heart. In the CM-YAPon study published in Nature Cardiovascular Research, drug-conditional YAP activation in cardiomyocytes promoted protection against cardiac injury while altering cardiomyocyte states and the surrounding cardiac environment.',
     },
     {
-      title: 'Genetic models',
-      text: 'Placeholder: genetic systems used to study regenerative states will be described here.',
+      title: 'Hippo–YAP Signaling',
+      text: 'Hippo signaling and its downstream effectors YAP and TAZ regulate diverse cellular processes. Published work from Fansen Meng has investigated this pathway in cardiac biology, innate immune signaling, and host–pathogen interactions, including regulation of YAP/TEAD activity during SARS-CoV-2 infection.',
     },
     {
-      title: 'Single-cell multi-omics',
-      text: 'Placeholder: single-cell measurement approaches will be described here.',
-    },
-    {
-      title: 'Spatial biology',
-      text: 'Placeholder: spatial methods for mapping tissue niches will be described here.',
-    },
-    {
-      title: 'Functional cardiac injury models',
-      text: 'Placeholder: injury models used to assess regenerative outcomes will be described here.',
+      title: 'Innate Immune Signaling',
+      text: 'Earlier studies identified mechanisms through which Hippo pathway components regulate cytosolic nucleic-acid sensing and innate immune responses. This work includes regulation of IRF3 by Mst1, YAP/TAZ-mediated control of TBK1, and phase-separation-dependent suppression of cGAS–STING signaling by mutant NF2.',
     },
   ],
-  /**
-   * PI REVIEW REQUIRED:
-   * Final prominence and wording of YAPon as a signature platform are provisional.
-   * Do not over-brand the entire laboratory around YAP.
-   */
-  yapon: {
-    title: 'YAPon',
-    text: 'A structural placeholder for the YAPon platform. Prominence, naming, and scientific wording are pending PI review and should not be treated as final laboratory branding.',
+  cmYapon: {
+    reviewStatus,
+    title: 'CM-YAPon',
+    text: 'In published work, CM-YAPon was developed as an AAV9-based, drug-inducible approach for transient control of YAP activity in cardiomyocytes. The study demonstrated cardiac protection following injury and provided a proof of concept for temporally controlled regenerative gene therapy.',
   },
+} as const;
+
+export const peopleTeaser = {
+  supporting: 'Meet the people behind our research.',
 } as const;
 
 export const joinCopy = {
   heading: 'Join Us',
-  interest: 'Interested in our research?',
+  interest: 'Interested in the Meng Lab?',
   recruitmentPending:
-    'Recruitment information will be added when it is available. This page does not currently list open positions.',
-  environment:
-    'A description of the research environment will be published once institutional affiliation is confirmed.',
-  roles: {
-    postdoc:
-      'Information for postdoctoral fellows will be posted when recruitment details are available.',
-    graduate:
-      'Information for graduate students will be posted when recruitment details are available.',
-    staff:
-      'Information for research staff will be posted when recruitment details are available.',
-  },
-  apply:
-    'Application instructions and contact channels will be added when official recruitment information is published. Please do not send application materials until those details appear here.',
+    'Recruitment information will be posted here when official details become available.',
 } as const;
 
 export const peoplePlaceholders = {
   title: 'Title and appointment will be added following PI review.',
   institution: 'Institutional affiliation has not yet been published on this site.',
-  biography: 'A short biography will appear here after PI review.',
-  education: 'Education and training details will be added when confirmed.',
   awards: 'Selected awards will be listed when confirmed.',
   links: 'External profile links (for example Google Scholar or ORCID) will be added when provided.',
 } as const;

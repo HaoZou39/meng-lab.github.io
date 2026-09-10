@@ -1,4 +1,4 @@
-# Meng Lab website (Phase 1)
+# Meng Lab website
 
 A static academic laboratory website for **Meng Lab**.
 
@@ -7,6 +7,8 @@ This is an early development version hosted on a personal GitHub account. It is 
 Provisional development URL:
 
 https://haozou39.github.io/meng-lab.github.io/
+
+Public copy on this site is limited to published research and basic public biography.
 
 ## Local setup
 
@@ -84,5 +86,3 @@ Markdown collections:
 - `src/content/news/` — news items
 - `src/content/publications/` — publications
 - `src/content/people/` — people
-
-Phase 1 is intentionally content-light. Do not invent news, people, affiliations, or recruitment details.
