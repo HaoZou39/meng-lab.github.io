@@ -22,3 +22,7 @@ Thumbs.db
 *.swp
 .idea/
 .vscode/
+
+# Local source/reference assets
+design-assets/
+design_assets/
