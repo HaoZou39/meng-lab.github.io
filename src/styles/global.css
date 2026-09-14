@@ -74,8 +74,15 @@ body {
   max-width: var(--text-measure);
 }
 
-.section {
-  padding-block: var(--section-y);
+@layer components {
+  .section {
+    padding-top: var(--section-y);
+    padding-bottom: var(--section-y);
+  }
+}
+
+.pt-0 {
+  padding-top: 0;
 }
 
 .rule {
@@ -208,6 +215,12 @@ body {
   color: var(--color-text);
   background: transparent;
   border: 0;
+}
+
+@media (min-width: 768px) {
+  .menu-button {
+    display: none;
+  }
 }
 
 .menu-button-bars,
