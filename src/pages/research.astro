@@ -32,6 +32,15 @@ import { withBase } from '../lib/paths';
               summary={section.text}
               split={showMedia}
             >
+              {index === 0 && (
+                <div slot="selected-work" class="selected-work">
+                  <p class="eyebrow">Selected published work</p>
+                  <h4 id="cm-yapon" class="selected-work__title">
+                    {researchPage.cmYapon.title}
+                  </h4>
+                  <p>{researchPage.cmYapon.text}</p>
+                </div>
+              )}
               {showMedia &&
                 (image ? (
                   <figure class="research-theme-media m-0">
@@ -59,14 +68,27 @@ import { withBase } from '../lib/paths';
       }
     </div>
   </section>
-
-  <section class="section pt-0" aria-labelledby="cm-yapon">
-    <div class="wrap">
-      {/* PI REVIEW REQUIRED: wording/branding only. */}
-      <div class="measure">
-        <h2 id="cm-yapon" class="section-title mb-5">{researchPage.cmYapon.title}</h2>
-        <p class="lede">{researchPage.cmYapon.text}</p>
-      </div>
-    </div>
-  </section>
 </BaseLayout>
+
+<style>
+  .selected-work {
+    margin-top: 1.5rem;
+    max-width: var(--text-measure);
+  }
+
+  .selected-work .eyebrow {
+    margin-bottom: 0.45rem;
+  }
+
+  .selected-work__title {
+    margin-bottom: 0.5rem;
+    font-size: 1.125rem;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    line-height: 1.3;
+  }
+
+  .selected-work p:last-child {
+    color: var(--color-muted);
+  }
+</style>

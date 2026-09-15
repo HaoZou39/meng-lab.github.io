@@ -58,7 +58,7 @@ export const researchThemes = [
 export const researchPage = {
   reviewStatus,
   intro:
-    'The Meng Lab website currently highlights published work spanning cardiac repair and regeneration, Hippo–YAP signaling, and innate immune regulation.',
+    'Our published research spans cardiac repair and regeneration, Hippo–YAP signaling, and innate immune regulation.',
   sections: [
     {
       title: 'Cardiac Repair & Regeneration',
@@ -78,7 +78,7 @@ export const researchPage = {
   cmYapon: {
     reviewStatus,
     title: 'CM-YAPon',
-    text: 'In published work, CM-YAPon was developed as an AAV9-based, drug-inducible approach for transient control of YAP activity in cardiomyocytes. The study demonstrated cardiac protection following injury and provided a proof of concept for temporally controlled regenerative gene therapy.',
+    text: 'In published work, CM-YAPon was developed as an AAV9-based, drug-inducible approach for transient control of YAP activity in cardiomyocytes, providing a proof of concept for temporally controlled regenerative gene therapy.',
   },
 } as const;
 
