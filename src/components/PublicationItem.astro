@@ -9,7 +9,6 @@ interface Props {
   pdf?: string;
   provisional?: boolean;
   flush?: boolean;
-  compactAuthors?: boolean;
 }
 
 const {
@@ -22,11 +21,7 @@ const {
   pdf,
   provisional = false,
   flush = false,
-  compactAuthors = false,
 } = Astro.props;
-
-const authorLine =
-  authors.length === 0 ? '' : compactAuthors ? `${authors[0]} et al.` : authors.join(', ');
 
 const links = [
   doi ? { href: `https://doi.org/${doi}`, label: 'DOI' } : null,
@@ -37,7 +32,18 @@ const links = [
 
 <article class:list={[flush ? 'grid gap-2' : 'pub-item']}>
   <h3 class="research-title">{title}</h3>
-  {authorLine && <p>{authorLine}</p>}
+  {
+    authors.length > 0 && (
+      <p class="pub-authors">
+        {authors.map((author, index) => (
+          <>
+            {index > 0 ? ', ' : ''}
+            {author === 'Fansen Meng' ? <strong>{author}</strong> : author}
+          </>
+        ))}
+      </p>
+    )
+  }
   <p class="meta">{journal} · {year}</p>
   {
     links.length > 0 ? (

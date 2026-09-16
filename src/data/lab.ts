@@ -8,14 +8,14 @@
 export const reviewStatus = 'pi-review' as const;
 
 export const siteMeta = {
-  title: 'Meng Lab',
+  title: 'Meng Lab @ MCG VBC',
   description:
     'Our published research spans cardiac biology, Hippo–YAP signaling, and innate immune regulation.',
 } as const;
 
 export const lab = {
-  name: 'MENG LAB',
-  shortName: 'Meng Lab',
+  name: 'MENG LAB @ MCG VBC',
+  shortName: 'Meng Lab @ MCG VBC',
   reviewStatus,
   tagline: 'Understanding signaling and cellular responses in cardiac repair and regeneration.',
   taglineLines: [

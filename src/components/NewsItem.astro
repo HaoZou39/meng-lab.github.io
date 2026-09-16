@@ -8,11 +8,10 @@ interface Props {
 
 const { title, date, href, placeholder = false } = Astro.props;
 
-const formatted = date.toLocaleDateString('en-GB', {
-  day: 'numeric',
-  month: 'long',
-  year: 'numeric',
-});
+const day = date.toLocaleDateString('en-GB', { day: 'numeric', timeZone: 'UTC' });
+const month = date.toLocaleDateString('en-GB', { month: 'long', timeZone: 'UTC' });
+const year = date.toLocaleDateString('en-GB', { year: 'numeric', timeZone: 'UTC' });
+const formatted = `${day} ${month}, ${year}`;
 ---
 
 <article class="news-row">
