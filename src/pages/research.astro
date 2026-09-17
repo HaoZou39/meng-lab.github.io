@@ -7,7 +7,7 @@ import { researchPage, researchThemes } from '../data/lab';
 import { withBase } from '../lib/paths';
 ---
 
-<BaseLayout title="Research" description="Published research from the Meng Lab.">
+<BaseLayout title="Research" description={researchPage.intro}>
   <section class="section">
     <div class="wrap">
       <SectionHeading title="Research" as="h1">
@@ -18,7 +18,7 @@ import { withBase } from '../lib/paths';
 
   <section class="section pt-0" aria-labelledby="research-themes">
     <div class="wrap">
-      <h2 id="research-themes" class="sr-only">Published research themes</h2>
+      <h2 id="research-themes" class="sr-only">Research themes</h2>
       {
         researchPage.sections.map((section, index) => {
           const image = 'image' in section ? section.image : undefined;
@@ -66,6 +66,11 @@ import { withBase } from '../lib/paths';
           );
         })
       }
+
+      <section class="research-approach" aria-labelledby="our-approach">
+        <h2 id="our-approach" class="section-title mb-4">{researchPage.approach.title}</h2>
+        <p class="lede m-0">{researchPage.approach.text}</p>
+      </section>
     </div>
   </section>
 </BaseLayout>
@@ -90,5 +95,19 @@ import { withBase } from '../lib/paths';
 
   .selected-work p:last-child {
     color: var(--color-muted);
+  }
+
+  .research-approach {
+    margin-top: 4.5rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--color-border);
+    max-width: var(--text-measure);
+  }
+
+  @media (min-width: 768px) {
+    .research-approach {
+      margin-top: 5.5rem;
+      padding-top: 3.5rem;
+    }
   }
 </style>

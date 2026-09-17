@@ -17,6 +17,12 @@ const featuredHeading = featured.length === 1 ? 'Featured Publication' : 'Featur
     <div class="wrap">
       <SectionHeading title="Publications" as="h1" />
 
+      <p class="pub-legend meta mt-6 mb-0">
+        <span><sup>#</sup> Co-first author</span>
+        <span class="pub-legend__sep" aria-hidden="true">·</span>
+        <span><sup>*</sup> Corresponding author</span>
+      </p>
+
       <section class="mt-12 md:mt-16" aria-labelledby="featured-publications">
         <h2 id="featured-publications" class="section-title mb-6">{featuredHeading}</h2>
         {
@@ -33,6 +39,8 @@ const featuredHeading = featured.length === 1 ? 'Featured Publication' : 'Featur
                 pubmed={entry.data.pubmed}
                 pdf={entry.data.pdf}
                 provisional={entry.data.provisional}
+                coFirstAuthors={entry.data.coFirstAuthors}
+                correspondingAuthors={entry.data.correspondingAuthors}
               />
             ))
           )
@@ -60,6 +68,8 @@ const featuredHeading = featured.length === 1 ? 'Featured Publication' : 'Featur
                       pubmed={entry.data.pubmed}
                       pdf={entry.data.pdf}
                       provisional={entry.data.provisional}
+                      coFirstAuthors={entry.data.coFirstAuthors}
+                      correspondingAuthors={entry.data.correspondingAuthors}
                     />
                   ))}
               </div>
@@ -70,3 +80,15 @@ const featuredHeading = featured.length === 1 ? 'Featured Publication' : 'Featur
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .pub-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.65rem;
+  }
+
+  .pub-legend__sep {
+    opacity: 0.55;
+  }
+</style>

@@ -84,9 +84,18 @@ const news = (await getNews()).slice(0, 4);
                 pubmed={entry.data.pubmed}
                 pdf={entry.data.pdf}
                 provisional={entry.data.provisional}
+                coFirstAuthors={entry.data.coFirstAuthors}
+                correspondingAuthors={entry.data.correspondingAuthors}
                 flush
               />
             ))
+          }
+          {
+            featured.some((entry) => entry.data.correspondingAuthors.length > 0) && (
+              <p class="meta mt-4 mb-0">
+                <sup>*</sup> Corresponding author
+              </p>
+            )
           }
           <p class="mt-8">
             <a class="editorial-link" href={withBase('/publications')}>

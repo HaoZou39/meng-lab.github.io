@@ -63,8 +63,15 @@ const grouped = groups
                   <h3 class="section-title mb-4">{person.data.name}</h3>
                   <p class="muted mb-8">
                     {person.data.title || peoplePlaceholders.title}
-                    <br />
-                    {person.data.institution || peoplePlaceholders.institution}
+                    {(person.data.institution || peoplePlaceholders.institution)
+                      .split('\n')
+                      .filter((line) => line.trim().length > 0)
+                      .map((line) => (
+                        <>
+                          <br />
+                          {line.trim()}
+                        </>
+                      ))}
                   </p>
 
                   <div class="detail-block">
@@ -81,7 +88,7 @@ const grouped = groups
                   </div>
 
                   <div class="detail-block">
-                    <h4 class="detail-label">Education</h4>
+                    <h4 class="detail-label">Education & Training</h4>
                     {person.data.education.length > 0 ? (
                       <ul>
                         {person.data.education.map((item) => (

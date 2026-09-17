@@ -7,10 +7,20 @@
 
 export const reviewStatus = 'pi-review' as const;
 
+export const scientificIdentity = [
+  'Cardiac Regeneration',
+  'Cardiomyocyte Plasticity',
+  'Cardioimmunology',
+] as const;
+
+export const scientificIdentityLine = scientificIdentity.join(' · ');
+
+const mission =
+  'Our lab investigates how cardiomyocyte plasticity and the cardiac microenvironment can be harnessed to promote heart regeneration and repair.';
+
 export const siteMeta = {
   title: 'Meng Lab @ MCG VBC',
-  description:
-    'Our published research spans cardiac biology, Hippo–YAP signaling, and innate immune regulation.',
+  description: mission,
 } as const;
 
 export const lab = {
@@ -22,8 +32,9 @@ export const lab = {
     'Understanding signaling and cellular responses',
     'in cardiac repair and regeneration.',
   ] as const,
-  supportingSentence:
-    'Our published research spans cardiac biology, Hippo–YAP signaling, and innate immune regulation.',
+  scientificIdentity,
+  scientificIdentityLine,
+  supportingSentence: mission,
 } as const;
 
 export const navigation = [
@@ -37,48 +48,51 @@ export const navigation = [
 export const researchThemes = [
   {
     number: '01',
-    title: 'Cardiac Repair & Regeneration',
+    title: 'Cardiac Regeneration',
     summary:
-      'Our published work has examined how controlled modulation of YAP signaling influences cardiac responses to injury, cardiomyocyte states, and cardiac protection.',
+      'The adult mammalian heart has a limited capacity to regenerate after injury. Our lab seeks to understand the molecular and cellular mechanisms that restrict cardiac regeneration and to develop strategies that restore regenerative potential in the adult heart.',
   },
   {
     number: '02',
-    title: 'Hippo–YAP Signaling',
+    title: 'Cardiomyocyte Plasticity',
     summary:
-      'Our published work has examined how Hippo pathway components and YAP/TAZ regulate cellular signaling across cardiovascular, immune, and disease contexts.',
+      'Cardiomyocytes undergo profound changes in cellular state during development, injury, and regeneration. We investigate the mechanisms that control cardiomyocyte plasticity, including dedifferentiation, proliferation, metabolic remodeling, and redifferentiation.',
   },
   {
     number: '03',
-    title: 'Innate Immune Signaling',
+    title: 'Cardioimmunology',
     summary:
-      'Our published work has defined mechanisms connecting Hippo pathway signaling with antiviral defense, cytosolic nucleic-acid sensing, and antitumor immunity.',
+      'Cardiac regeneration is not solely a cardiomyocyte-autonomous process. Immune cells, particularly macrophages, dynamically communicate with cardiomyocytes and stromal cells after injury.',
   },
 ] as const;
 
 export const researchPage = {
   reviewStatus,
-  intro:
-    'Our published research spans cardiac repair and regeneration, Hippo–YAP signaling, and innate immune regulation.',
+  intro: mission,
   sections: [
     {
-      title: 'Cardiac Repair & Regeneration',
-      text: 'Recent published work has examined the therapeutic and biological consequences of controlled YAP activation in the heart. In the CM-YAPon study published in Nature Cardiovascular Research, drug-conditional YAP activation in cardiomyocytes promoted protection against cardiac injury while altering cardiomyocyte states and the surrounding cardiac environment.',
+      title: 'Cardiac Regeneration',
+      text: 'The adult mammalian heart has a limited capacity to regenerate after injury. Our lab seeks to understand the molecular and cellular mechanisms that restrict cardiac regeneration and to develop strategies that restore regenerative potential in the adult heart. We are particularly interested in how developmental and regenerative signaling pathways can be transiently reactivated to protect the injured myocardium, promote cardiomyocyte renewal, and improve long-term cardiac repair.',
     },
     {
-      title: 'Hippo–YAP Signaling',
-      text: 'Hippo signaling and its downstream effectors YAP and TAZ regulate diverse cellular processes. Published work has examined this pathway in cardiac biology, innate immune signaling, and host–pathogen interactions, including regulation of YAP/TEAD activity during SARS-CoV-2 infection.',
+      title: 'Cardiomyocyte Plasticity',
+      text: 'Cardiomyocytes undergo profound changes in cellular state during development, injury, and regeneration. We investigate the mechanisms that control cardiomyocyte plasticity, including dedifferentiation, proliferation, metabolic remodeling, and redifferentiation. A major focus of our research is understanding how Hippo-YAP signaling and other regenerative pathways reprogram adult cardiomyocytes toward a more youthful and regenerative state while preserving cardiac function.',
       image: '/media/research/hippo-yap-signaling.webp',
       imageAlt: 'Hippo–YAP signaling editorial illustration',
     },
     {
-      title: 'Innate Immune Signaling',
-      text: 'Earlier studies identified mechanisms through which Hippo pathway components regulate cytosolic nucleic-acid sensing and innate immune responses. This work includes regulation of IRF3 by Mst1, YAP/TAZ-mediated control of TBK1, and phase-separation-dependent suppression of cGAS–STING signaling by mutant NF2.',
+      title: 'Cardioimmunology',
+      text: 'Cardiac regeneration is not solely a cardiomyocyte-autonomous process. Immune cells, particularly macrophages, dynamically communicate with cardiomyocytes and stromal cells after injury. We study how recruited and tissue-resident macrophages shape the regenerative microenvironment through cytokines, growth factors, extracellular matrix remodeling, and metabolic signaling. Our goal is to identify immune–cardiomyocyte interactions that can be therapeutically reprogrammed to enhance cardiac repair.',
     },
   ],
   cmYapon: {
     reviewStatus,
     title: 'CM-YAPon',
     text: 'In published work, CM-YAPon was developed as an AAV9-based, drug-inducible approach for transient control of YAP activity in cardiomyocytes, providing a proof of concept for temporally controlled regenerative gene therapy.',
+  },
+  approach: {
+    title: 'Our Approach',
+    text: 'We integrate genetic and viral mouse models, cardiac injury models, molecular and cellular biology, and functional cardiac phenotyping with single-cell and spatial multi-omics. By connecting molecular mechanisms with cell–cell communication and cardiac function, we aim to uncover fundamental principles of heart regeneration and translate them into new strategies for treating cardiovascular disease.',
   },
 } as const;
 

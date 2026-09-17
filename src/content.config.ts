@@ -27,6 +27,9 @@ const publications = defineCollection({
     featuredImageAlt: z.string().optional(),
     // Provisional entries establish layout without claiming complete metadata.
     provisional: z.boolean().default(false),
+    // Contribution markers are stored separately from author-name strings.
+    coFirstAuthors: z.array(z.string()).default([]),
+    correspondingAuthors: z.array(z.string()).default([]),
   }),
 });
 

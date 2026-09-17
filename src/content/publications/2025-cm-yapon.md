@@ -30,4 +30,7 @@ pubmed: https://pubmed.ncbi.nlm.nih.gov/41233538/
 featuredImage: /media/publications/cm-yapon-featured.webp
 featuredImageAlt: Editorial illustration for the CM-YAPon cardiac injury study
 provisional: false
+coFirstAuthors: []
+correspondingAuthors:
+  - James F. Martin
 ---

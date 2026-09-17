@@ -28,4 +28,11 @@ featured: false
 doi: 10.1016/j.molcel.2021.07.040
 pubmed: https://pubmed.ncbi.nlm.nih.gov/34453890/
 provisional: false
+coFirstAuthors:
+  - Fansen Meng
+  - Zhengyang Yu
+  - Dan Zhang
+  - Shasha Chen
+correspondingAuthors:
+  - Pinglong Xu
 ---
