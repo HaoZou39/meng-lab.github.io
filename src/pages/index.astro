@@ -5,13 +5,13 @@ import SectionHeading from '../components/SectionHeading.astro';
 import ResearchItem from '../components/ResearchItem.astro';
 import PublicationItem from '../components/PublicationItem.astro';
 import NewsItem from '../components/NewsItem.astro';
-import ImagePlaceholder from '../components/ImagePlaceholder.astro';
 import { joinCopy, peopleTeaser, researchThemes } from '../data/lab';
 import { getNews, getPublications } from '../lib/content';
 import { withBase } from '../lib/paths';
 
 const featured = (await getPublications()).filter((entry) => entry.data.featured);
 const featuredVisual = featured.find((entry) => entry.data.featuredImage);
+const hasFeaturedImage = Boolean(featuredVisual?.data.featuredImage);
 const news = (await getNews()).slice(0, 4);
 ---
 
@@ -46,9 +46,9 @@ const news = (await getNews()).slice(0, 4);
   <section class="section pt-0" aria-labelledby="featured-work">
     <div class="wrap">
       <SectionHeading id="featured-work" eyebrow="Featured Work" as="h2" />
-      <div class="featured-grid">
+      <div class:list={['featured-grid', !hasFeaturedImage && 'featured-grid--text-only']}>
         {
-          featuredVisual?.data.featuredImage ? (
+          hasFeaturedImage && featuredVisual?.data.featuredImage && (
             <figure class="featured-work-media m-0">
               <div class="featured-work-media__frame">
                 <img
@@ -64,12 +64,6 @@ const news = (await getNews()).slice(0, 4);
                 />
               </div>
             </figure>
-          ) : (
-            <ImagePlaceholder
-              aspect="4 / 3"
-              label="Image forthcoming"
-              alt="Placeholder for featured publication figure"
-            />
           )
         }
         <div>

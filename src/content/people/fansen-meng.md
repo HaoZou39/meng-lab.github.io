@@ -28,4 +28,9 @@ biography:
   - Fansen Meng, PhD, is an Assistant Professor in the Vascular Biology Center at the Medical College of Georgia, Augusta University. His laboratory investigates the molecular and cellular mechanisms underlying cardiac regeneration and repair, with particular emphasis on cardiomyocyte plasticity and the cardiac microenvironment.
   - His research examines how regenerative signaling pathways, immune cells, fibroblasts, and the extracellular matrix coordinate cardiomyocyte dedifferentiation, proliferation, and redifferentiation after cardiac injury.
   - His published work spans Hippo–YAP signaling, innate immune regulation, and cardiac biology, including CM-YAPon, a drug-inducible strategy for transient YAP activation in cardiomyocytes.
+links:
+  - label: ORCID
+    href: https://orcid.org/0000-0003-3173-5512
+  - label: Google Scholar
+    href: https://scholar.google.com/citations?user=4ZdEMxMAAAAJ&hl=en
 ---

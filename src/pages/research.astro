@@ -2,7 +2,6 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import ResearchItem from '../components/ResearchItem.astro';
-import ImagePlaceholder from '../components/ImagePlaceholder.astro';
 import { researchPage, researchThemes } from '../data/lab';
 import { withBase } from '../lib/paths';
 ---
@@ -23,7 +22,7 @@ import { withBase } from '../lib/paths';
         researchPage.sections.map((section, index) => {
           const image = 'image' in section ? section.image : undefined;
           const imageAlt = 'imageAlt' in section ? section.imageAlt : undefined;
-          const showMedia = index === 1;
+          const showMedia = Boolean(image);
 
           return (
             <ResearchItem
@@ -41,27 +40,20 @@ import { withBase } from '../lib/paths';
                   <p>{researchPage.cmYapon.text}</p>
                 </div>
               )}
-              {showMedia &&
-                (image ? (
-                  <figure class="research-theme-media m-0">
-                    <div class="research-theme-media__frame">
-                      <img
-                        src={withBase(image)}
-                        alt={imageAlt ?? 'Research theme illustration'}
-                        width="1122"
-                        height="1402"
-                        decoding="async"
-                        loading="lazy"
-                      />
-                    </div>
-                  </figure>
-                ) : (
-                  <ImagePlaceholder
-                    aspect="4 / 5"
-                    label="Image forthcoming"
-                    alt="Placeholder for research theme imagery"
-                  />
-                ))}
+              {showMedia && image && (
+                <figure class="research-theme-media m-0">
+                  <div class="research-theme-media__frame">
+                    <img
+                      src={withBase(image)}
+                      alt={imageAlt ?? 'Research theme illustration'}
+                      width="1122"
+                      height="1402"
+                      decoding="async"
+                      loading="lazy"
+                    />
+                  </div>
+                </figure>
+              )}
             </ResearchItem>
           );
         })

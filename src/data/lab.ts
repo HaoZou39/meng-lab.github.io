@@ -77,8 +77,6 @@ export const researchPage = {
     {
       title: 'Cardiomyocyte Plasticity',
       text: 'Cardiomyocytes undergo profound changes in cellular state during development, injury, and regeneration. We investigate the mechanisms that control cardiomyocyte plasticity, including dedifferentiation, proliferation, metabolic remodeling, and redifferentiation. A major focus of our research is understanding how Hippo-YAP signaling and other regenerative pathways reprogram adult cardiomyocytes toward a more youthful and regenerative state while preserving cardiac function.',
-      image: '/media/research/hippo-yap-signaling.webp',
-      imageAlt: 'Hippo–YAP signaling editorial illustration',
     },
     {
       title: 'Cardioimmunology',

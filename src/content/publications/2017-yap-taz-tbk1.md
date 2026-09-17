@@ -23,4 +23,9 @@ featured: false
 doi: 10.1038/ncb3496
 pubmed: https://pubmed.ncbi.nlm.nih.gov/28346439/
 provisional: false
+coFirstAuthors:
+  - Qian Zhang
+  - Fansen Meng
+correspondingAuthors:
+  - Pinglong Xu
 ---
