@@ -101,9 +101,17 @@ export const peopleTeaser = {
 export const joinCopy = {
   heading: 'Join Us',
   interest: 'Interested in the Meng Lab?',
-  recruitmentPending:
-    'Recruitment information will be posted here when official details become available.',
+  recruitmentSummary:
+    'We are recruiting one Postdoctoral Fellow and one Research Assistant to join the Meng Lab in the Vascular Biology Center, Medical College of Georgia, Augusta University.',
 } as const;
+
+export const socialLinks = [
+  {
+    label: 'X',
+    handle: '@MengLabMCG',
+    href: 'https://x.com/MengLabMCG',
+  },
+] as const;
 
 export const peoplePlaceholders = {
   title: 'Title and appointment will be added following PI review.',

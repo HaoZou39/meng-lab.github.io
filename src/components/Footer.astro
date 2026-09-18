@@ -1,12 +1,41 @@
 ---
-import { lab } from '../data/lab';
+import { lab, socialLinks } from '../data/lab';
 ---
 
 <footer class="site-footer">
   <div class="wrap">
     <p class="wordmark mb-3">{lab.name}</p>
+    {
+      socialLinks.length > 0 && (
+        <p class="footer-social mb-3">
+          {socialLinks.map((link, index) => (
+            <>
+              {index > 0 ? <span class="footer-social__sep" aria-hidden="true"> · </span> : null}
+              <a
+                class="editorial-link"
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {link.label} · {link.handle}
+              </a>
+            </>
+          ))}
+        </p>
+      )
+    }
     <p>
       Academic laboratory website — development version. Final repository and domain may change.
     </p>
   </div>
 </footer>
+
+<style>
+  .footer-social {
+    max-width: var(--text-measure);
+  }
+
+  .footer-social__sep {
+    color: var(--color-muted);
+  }
+</style>

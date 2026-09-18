@@ -128,7 +128,7 @@ const news = (await getNews()).slice(0, 4);
   <section class="section pt-0" aria-labelledby="join-lab">
     <div class="wrap">
       <SectionHeading id="join-lab" eyebrow="Join the Lab" title={joinCopy.interest} as="h2" />
-      <p class="lede">{joinCopy.recruitmentPending}</p>
+      <p class="lede">{joinCopy.recruitmentSummary}</p>
       <p class="mt-8">
         <a class="editorial-link" href={withBase('/join')}>
           Join Us <span aria-hidden="true">→</span>

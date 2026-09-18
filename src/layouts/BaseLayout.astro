@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { siteMeta, lab } from '../data/lab';
+import { siteMeta, lab, socialLinks } from '../data/lab';
 import { withBase } from '../lib/paths';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -13,6 +13,7 @@ interface Props {
 const { title, description = siteMeta.description } = Astro.props;
 const pageTitle = title ? `${title} · ${siteMeta.title}` : siteMeta.title;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const twitterSite = socialLinks.find((link) => link.handle.startsWith('@'))?.handle;
 ---
 
 <!doctype html>
@@ -37,6 +38,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={lab.shortName} />
     <meta name="twitter:card" content="summary" />
+    {twitterSite && <meta name="twitter:site" content={twitterSite} />}
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
   </head>
