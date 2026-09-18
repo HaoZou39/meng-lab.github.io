@@ -82,7 +82,7 @@ export const recruitment = {
   environment: {
     title: 'About the Vascular Biology Center & Augusta',
     paragraphs: [
-      'The Vascular Biology Center at the Medical College of Georgia, Augusta University provides a highly collaborative environment for basic, translational, and clinically relevant cardiovascular research, with research spanning myocardial infarction, heart failure, hypertension, vascular biology, cardiovascular metabolism, inflammation, and regenerative biology.',
+      'The Vascular Biology Center, part of the Medical College of Georgia at Augusta University, provides a highly collaborative environment for basic, translational, and clinically relevant cardiovascular research, with research spanning myocardial infarction, heart failure, hypertension, vascular biology, cardiovascular metabolism, inflammation, and regenerative biology.',
       'Augusta, Georgia combines a strong biomedical research environment with relatively affordable living costs and a high quality of life. Atlanta, Charleston, and Savannah are approximately 2–3 hours away by car.',
     ],
   },

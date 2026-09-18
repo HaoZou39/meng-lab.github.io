@@ -5,7 +5,7 @@ import { recruitment } from '../data/recruitment';
 ---
 
 <BaseLayout title={recruitment.pageTitle} description={recruitment.description}>
-  <section class="section">
+  <section class="join-hero">
     <div class="wrap">
       <SectionHeading eyebrow={recruitment.pageTitle} title={recruitment.heading} as="h1">
         <p class="lede mt-6">{recruitment.intro}</p>
@@ -18,65 +18,75 @@ import { recruitment } from '../data/recruitment';
     </div>
   </section>
 
-  <section class="section pt-0" aria-labelledby="research-focus">
-    <div class="wrap measure">
-      <h2 id="research-focus" class="section-title mb-4">{recruitment.researchFocus.title}</h2>
-      {
-        recruitment.researchFocus.paragraphs.map((paragraph, index) => (
-          <p class:list={[index < recruitment.researchFocus.paragraphs.length - 1 ? 'mb-4' : 'mb-0']}>
-            {paragraph}
-          </p>
-        ))
-      }
+  <section class="join-section" aria-labelledby="research-focus">
+    <div class="wrap">
+      <div class="measure">
+        <h2 id="research-focus" class="section-title mb-4">{recruitment.researchFocus.title}</h2>
+        {
+          recruitment.researchFocus.paragraphs.map((paragraph, index) => (
+            <p class:list={[index < recruitment.researchFocus.paragraphs.length - 1 ? 'mb-4' : 'mb-0']}>
+              {paragraph}
+            </p>
+          ))
+        }
+      </div>
     </div>
   </section>
 
-  <section class="section pt-0" aria-labelledby="postdoctoral-fellow">
-    <div class="wrap measure">
-      <h2 id="postdoctoral-fellow" class="section-title mb-4">{recruitment.postdoc.title}</h2>
-      <p class="mb-4">{recruitment.postdoc.intro}</p>
-      <ul class="join-list">
-        {recruitment.postdoc.qualifications.map((item) => <li>{item}</li>)}
-      </ul>
+  <section class="join-section" aria-labelledby="postdoctoral-fellow">
+    <div class="wrap">
+      <div class="measure">
+        <h2 id="postdoctoral-fellow" class="section-title mb-4">{recruitment.postdoc.title}</h2>
+        <p class="mb-4">{recruitment.postdoc.intro}</p>
+        <ul class="join-list">
+          {recruitment.postdoc.qualifications.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
     </div>
   </section>
 
-  <section class="section pt-0" aria-labelledby="research-assistant">
-    <div class="wrap measure">
-      <h2 id="research-assistant" class="section-title mb-4">
-        {recruitment.researchAssistant.title}
-      </h2>
-      <p class="mb-4">{recruitment.researchAssistant.intro}</p>
-      <ul class="join-list">
-        {recruitment.researchAssistant.qualifications.map((item) => <li>{item}</li>)}
-      </ul>
-      <p class="mt-5 mb-0 muted">{recruitment.researchAssistant.note}</p>
+  <section class="join-section" aria-labelledby="research-assistant">
+    <div class="wrap">
+      <div class="measure">
+        <h2 id="research-assistant" class="section-title mb-4">
+          {recruitment.researchAssistant.title}
+        </h2>
+        <p class="mb-4">{recruitment.researchAssistant.intro}</p>
+        <ul class="join-list">
+          {recruitment.researchAssistant.qualifications.map((item) => <li>{item}</li>)}
+        </ul>
+        <p class="mt-5 mb-0 muted">{recruitment.researchAssistant.note}</p>
+      </div>
     </div>
   </section>
 
-  <section class="section pt-0" aria-labelledby="visiting-scholars">
-    <div class="wrap measure">
-      <h2 id="visiting-scholars" class="section-title mb-4">
-        {recruitment.visitingScholars.title}
-      </h2>
-      <p class="mb-0 muted">{recruitment.visitingScholars.text}</p>
+  <section class="join-section" aria-labelledby="visiting-scholars">
+    <div class="wrap">
+      <div class="measure">
+        <h2 id="visiting-scholars" class="section-title mb-4">
+          {recruitment.visitingScholars.title}
+        </h2>
+        <p class="mb-0 muted">{recruitment.visitingScholars.text}</p>
+      </div>
     </div>
   </section>
 
-  <section class="section pt-0" aria-labelledby="training-career">
-    <div class="wrap measure">
-      <h2 id="training-career" class="section-title mb-4">{recruitment.training.title}</h2>
-      <p class="mb-4">{recruitment.training.intro}</p>
-      <p class="mb-3 muted">{recruitment.training.leadIn}</p>
-      <ul class="join-list">
-        {recruitment.training.items.map((item) => <li>{item}</li>)}
-      </ul>
+  <section class="join-section" aria-labelledby="training-career">
+    <div class="wrap">
+      <div class="measure">
+        <h2 id="training-career" class="section-title mb-4">{recruitment.training.title}</h2>
+        <p class="mb-4">{recruitment.training.intro}</p>
+        <p class="mb-3 muted">{recruitment.training.leadIn}</p>
+        <ul class="join-list">
+          {recruitment.training.items.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
     </div>
   </section>
 
-  <section class="section pt-0" aria-labelledby="how-to-apply">
-    <div class="wrap measure">
-      <div class="join-apply">
+  <section class="join-section" aria-labelledby="how-to-apply">
+    <div class="wrap">
+      <div class="measure">
         <h2 id="how-to-apply" class="section-title mb-4">{recruitment.apply.title}</h2>
         <p class="mb-3">{recruitment.apply.leadIn}</p>
         <p class="mb-4">
@@ -92,19 +102,39 @@ import { recruitment } from '../data/recruitment';
     </div>
   </section>
 
-  <section class="section pt-0" aria-labelledby="about-vbc-augusta">
-    <div class="wrap measure">
-      <h2 id="about-vbc-augusta" class="section-title mb-4">{recruitment.environment.title}</h2>
-      {
-        recruitment.environment.paragraphs.map((paragraph, index) => (
-          <p class:list={[index === 0 ? 'mb-4' : 'mb-0']}>{paragraph}</p>
-        ))
-      }
+  <section class="join-section" aria-labelledby="about-vbc-augusta">
+    <div class="wrap">
+      <div class="measure">
+        <h2 id="about-vbc-augusta" class="section-title mb-4">{recruitment.environment.title}</h2>
+        {
+          recruitment.environment.paragraphs.map((paragraph, index) => (
+            <p class:list={[index === 0 ? 'mb-4' : 'mb-0']}>{paragraph}</p>
+          ))
+        }
+      </div>
     </div>
   </section>
 </BaseLayout>
 
 <style>
+  .join-hero {
+    padding-top: var(--section-y);
+    padding-bottom: clamp(4rem, 7vw, 6rem);
+  }
+
+  .join-hero :global(header) {
+    margin-bottom: 0;
+  }
+
+  .join-section {
+    padding-bottom: clamp(3.25rem, 6vw, 5rem);
+  }
+
+  .join-section + .join-section {
+    border-top: 1px solid var(--color-border);
+    padding-top: clamp(2.5rem, 4vw, 3.5rem);
+  }
+
   .join-list {
     margin: 0;
     padding-left: 1.15rem;
@@ -113,9 +143,5 @@ import { recruitment } from '../data/recruitment';
 
   .join-list li + li {
     margin-top: 0.65rem;
-  }
-
-  .join-apply {
-    padding-top: 0.25rem;
   }
 </style>
