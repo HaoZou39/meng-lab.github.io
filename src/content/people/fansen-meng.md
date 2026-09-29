@@ -31,7 +31,7 @@ biography:
 links:
   - label: Email
     href: mailto:fmeng@augusta.edu
-  - label: Augusta University / VBC Profile
+  - label: Official Profile
     href: https://web2.augusta.edu/centers/vbc/fansen-meng.php
   - label: ORCID
     href: https://orcid.org/0000-0003-3173-5512
