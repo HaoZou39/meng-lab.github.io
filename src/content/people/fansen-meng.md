@@ -29,6 +29,10 @@ biography:
   - His research examines how regenerative signaling pathways, immune cells, fibroblasts, and the extracellular matrix coordinate cardiomyocyte dedifferentiation, proliferation, and redifferentiation after cardiac injury.
   - His published work spans Hippo–YAP signaling, innate immune regulation, and cardiac biology, including CM-YAPon, a drug-inducible strategy for transient YAP activation in cardiomyocytes.
 links:
+  - label: Email
+    href: mailto:fmeng@augusta.edu
+  - label: Augusta University / VBC Profile
+    href: https://web2.augusta.edu/centers/vbc/fansen-meng.php
   - label: ORCID
     href: https://orcid.org/0000-0003-3173-5512
   - label: Google Scholar
